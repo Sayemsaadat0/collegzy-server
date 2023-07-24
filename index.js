@@ -43,7 +43,12 @@ async function run() {
       const query = { _id: new ObjectId(id) };
       const result = await collegeCollection.findOne(query);
       res.send(result);
-    });
+    }); 
+ app.get('/admission', async(req,res)=>{
+  const result = await admissionCollection.find().toArray() 
+  res.send(result)
+ })
+
     app.post("/admission", async (req, res) => {
       const data = req.body;
       const result = await admissionCollection.insertOne(data);
